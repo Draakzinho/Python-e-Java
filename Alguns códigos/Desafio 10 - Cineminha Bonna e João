@@ -1,0 +1,50 @@
+Bonna e João adoram assistir filmes juntos nos finais de semana. Todos os meses, eles escolhem um gênero diferente para assistirem durante o mês. Para o mês de agosto, o gênero escolhido foi o de terror/suspense, e eles combinaram que, cada semana, um deles apresenta uma lista com sugestão de filmes e as notas que eles possuem no fórum de críticas a filmes dos alunos do CIn, o CInema.com.br. Para melhor visualização, Bonna e João contam com a sua ajuda para colocar as listas em ordem decrescente em relação as notas.
+
+OBS: Está proibido o uso de funções de ordenação de listas. Além disso, não haverá casos de empate nas notas.
+
+Dica: Segue abaixo dois vídeos explicando a lógica do método de ordenação por flutuação (ou bubble sort):
+
+Bubble-sort dance
+Bubble-sort simulação
+Input
+
+O primeiro input será o nome de quem está enviando as listas com os filmes, sendo Bonna ou João:
+
+nome = Nome do dono da lista.
+
+O segundo, será a quantidade de filmes e notas que as listas possuem:
+
+quantidade = Quantidade de filmes e notas.
+
+Após isso, seu programa irá receber os nomes e as notas respectivamente, no formato:
+
+{nome_filme} - {nota_filme}
+
+OBS: você deve usar .split() para tratar as entradas
+
+///
+
+nome = input() # O nome de quem está sugerindo
+qtd = int(input()) # A quantidade de filmes a serem inseridos
+filmes, notas = [], [] # Lista de filmes e notas
+
+if nome == "Bonna": # Caso o nome de quem está sugerindo seja Bonna:
+  print("Os filmes sugeridos por Bonna são:")
+elif nome == "João": # Caso seja João:
+  print("Os filmes sugeridos por João são:")
+for x in range (qtd): # Abro um for no intervalo da quantia de filmes a serem avaliados
+  dados = input() # Insiro os dados
+  filme, nota = dados.split("-") # Divido-os, mandando cada um pra sua respectiva lista
+  
+  filmes.append(filme)
+  notas.append(nota)
+  
+  n = len(notas) # Aplico o Bubble Sort
+  for j in range(n-1): # Abro um intervalo ate n-1
+    for i in range(n-1): # Abro outro intervalo dentro com o mesmo tamanho
+      if notas[i] < notas[i+1]: # Determino que, como eu quero ordem decrescente, se minha nota for menor que a da frente:
+        notas[i], notas[i+1] = notas[i+1], notas[i] # Inverto o lugar das duas.
+        filmes[i], filmes[i+1] = filmes[i+1], filmes[i] # Inverto também a ordem dos filmes, para que fique respectivos a suas notas.
+
+for x in range(qtd): # Abro um for no intervalo da minha lista de itens
+  print(f"{filmes[x]}-{notas[x]}") # Printo os nomes e notas dos filmes.

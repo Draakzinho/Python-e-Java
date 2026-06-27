@@ -1,0 +1,121 @@
+O SIEPE teve um erro em seu banco de dados, com isso algumas notas misturaram-se entre as escolas. Com isso algum aluno do 2º ano da Ete Porto Digital recebeu uma nota 10 indevida na disciplina de PNT. O professor Allyson está investigando a situação como pode e separou uma lista com as pessoas que conseguiram essa nota, ou seja dentre elas está quem não deveria ter recebido, mas ninguém quer assumir e todos apontam que a sua nota está correta!
+
+Enquanto o professor toma as devidas medidas ele atribuiu uma missão aos seus monitores: Ele irá passar a lista com as pessoas e irá comunicando-se com eles sobre o andamento da investigação. Com isso eles precisam fazer um sistema que possa comportar essas ações que vão alterando a lista até que reste apenas um aluno, a qual será aquele que está mentindo!
+
+Para o input, inicialmente, será recebida uma lista com o nome dos alunos que estão com 10 separados por vírgula, em uma mesma linha.
+
+nome1, nome2, nome3, ... , nome n
+
+Em seguida, serão recebidas diversas mensagens, até que sobre um único aluno na lista e o mistério seja solucionado.
+
+Para cada mensagem descrita abaixo, deverá chamar uma função que realize o que é pedido:
+
+“Daniel, mano, tô vendo um pouco do log do banco de dados. O aluno nesse índice não é o culpado. Verifica ai com o pessoal e deletem.”
+
+Você receberá logo em seguida uma entrada com a posição do aluno na lista e o removerá dela, além disso irá exibir como ela ficou após a remoção, dessa maneira:
+
+Cleython dos Santos, Arthur Miguel, Alice Augusta, Iago Leonam, Miguel Mendes, Jonathas Felipe
+
+Da mesma forma também poderá ser adicionada um novo estudante com o seguinte comando:
+
+"Kaio, tem mais gente com 10 aqui e tinha passado batido, adiciona ai com a rapaziada:"
+
+Você receberá logo em seguida uma entrada com o nome do novo aluno e o adicionará no final da lista APENAS caso já não esteja na lista e em seguida deverá printar a seguinte mensagem:
+
+"{novo_aluno} foi adicionado aos suspeitos!"
+
+Mas caso já esteja na lista, deverá aparecer:
+
+"Breno disse que o senhor tá viajando, nenhum respeito fessor, reprova esse cara."
+
+Você removerá o "último da chamada", ou seja o último alfabeticamente (crescente), caso receba a mensagem:
+
+"Cauã, vê só, acessei uma tabela aqui confiável e enfim... O último da chamada, podem descartar."
+
+Então, você deverá remover o último alfabeticamente e em seguida mostar os alunos, da mesma maneira que acima, MAS em ordem alfabética.
+
+Obs1: Observe que isso não deve alterar os valores da lista inicial, a original não deve ficar em ordem alfabética;
+
+Obs2: Use o metódo sorted(lista_de_alunos) nessa função.
+
+Obs3: NÃO TENTE USAR O .SORT!
+
+Agora, se a mensagem for:
+
+"Davi, vamo revisar o que fizemos até agora, assim a gente não se perde, beleza?"
+
+Deve aparecer o histórico ordenadamente de tudo que foi realizado até o momento. Exemplo:
+
+1 Removido aluno na posição 5
+
+2 Removido aluno na posição 3
+
+3 Adicionado aluno: Matheus Luiz
+
+4 Removido último aluno na ordem alfabética
+
+Para isso pode ser utilizado um dicionário que iniciará vazio, mas a cada ação realmente realizada (Adicionar aluno, remover aluno em uma posição e remover o último da chamada) será incrementado. Observe que cada ação deve ser descrita como no exemplo acima, além disso veja que a "coluna", a chave será a ordem que ocorre cada ação. O que sugiro é que faça um contador, ou seja uma variável inteira que inicie com 0 e a cada ação feita seja adicionada +1 e em seguida você poderia adicionar o valor ao dicionário assim:
+
+dicionário[contador] = "AÇÃO REALIZADA"
+
+Esse padrão terá em cada função e cada função receberá como parâmetro além dos convencionais o dicionário e a variável contador, além disso sempre que a função for chamada o contador deverá receber o valor da função, ou seja essa função deverá ter como return o próprio contador já atualizado!
+
+Caso a mensagem não seja nenhuma dessas, deverá aparecer o seguinte:
+
+Marcus, perguntou se o senhor teve um derrame com a cabeça no teclado.
+
+Por fim, quando restar apenas um aluno suspeito a mensagem impressa deverá ser:
+
+"Professor, aqui é Wollacy, quem está mentindo é: {nome_do_aluno}!"
+
+//
+
+
+alunos = input()
+alunos = alunos.split(", ")
+dicionario = {}
+contador_de_acoes = 0
+
+def remover_alfabeticamente():
+  nome_index = listaalunos.index(listaalfabetica[-1])
+  listaalfabetica.pop(-1)
+  listaalunos.pop(nome_index)
+  
+while True:
+  listaalfabetica = []
+  listaalunos = []
+  listaalunos = alunos
+  acao = input()
+  
+  
+  if acao == "Daniel, mano, tô vendo um pouco do log do banco de dados. O aluno nesse índice não é o culpado. Verifica ai com o pessoal e deletem.":
+    indice = int(input())
+    listaalunos.pop(indice)
+    print(*listaalunos, sep = ", ")
+    contador_de_acoes = contador_de_acoes + 1
+    dicionario[contador_de_acoes] = f"Removido aluno na posição {indice}" 
+  elif acao == "Kaio, tem mais gente com 10 aqui e tinha passado batido, adiciona ai com a rapaziada:":
+    alunoadd = input()
+    if alunoadd not in listaalunos:
+      listaalunos.append(alunoadd)
+      print(f"{alunoadd} foi adicionado aos suspeitos!")
+      contador_de_acoes = contador_de_acoes + 1
+      dicionario[contador_de_acoes] = f"Adicionado aluno: {alunoadd}" 
+    else:
+      print("Breno disse que o senhor tá viajando, nenhum respeito fessor, reprova esse cara.")
+  elif acao == "Cauã, vê só, acessei uma tabela aqui confiável e enfim... O último da chamada, podem descartar.":
+    listaalfabetica = sorted(listaalunos)
+    remover_alfabeticamente()
+    contador_de_acoes = contador_de_acoes + 1
+    dicionario[contador_de_acoes] = f"Removido último aluno na ordem alfabética" 
+    print(*listaalfabetica, sep = ", ")
+  
+  elif acao == "Davi, vamo revisar o que fizemos até agora, assim a gente não se perde, beleza?":
+    for k,v in dicionario.items():
+      print(k,v)
+  else:
+    print("Marcus, perguntou se o senhor teve um derrame com a cabeça no teclado.")
+  
+  if len(listaalunos) == 1:
+    print(f"Professor, aqui é Wollacy, quem está mentindo é: {listaalunos[0]}!")
+    break

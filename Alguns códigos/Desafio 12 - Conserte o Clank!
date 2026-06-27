@@ -1,0 +1,84 @@
+Clank, nosso robô preferido da saga de jogos Ratchet & Clank está desatualizado e precisa de um programador especializado em Python para atualizá-lo!
+
+Enquanto estava em uma de suas aventuras pela Solana Galaxy, um dos vilões, Doctor Nefarious danificou o Clank e fez com que ele perdesse a capacidade de avaliar as estruturas de sentenças matemáticas, isto é, ele não consegue determinar se a quantidade de parênteses está no mínimo adequada para ser uma sentença verídica.
+
+Sua tarefa será consertar o Clank criando um código que resolva o problema supramencionado.
+
+Para cada entrada, você deverá determinar se a quantidade de parênteses ‘(’ é igual a quantidade de parênteses ‘)’, não importa se a sentença matemática está escrita erroneamente, como por exemplo: “)(2 + 3)) - 2”, no caso, estamos nos preocupando somente com a quantidade.
+
+Obs(1).: você deverá usar recursão para verificar as equações;
+
+Obs(2).: não poderá usar funções que retornam o index de um elemento de um string, como por exemplo: find() e index(); e nem funções que contam as quantidades de ocorrências em listas ou strings, como count()
+
+Obs(3).: não poderá ser usado loops dentro das funções que forem criadas;
+
+Para avaliar a capacidade do seu código, Clank receberá um inteiro N que indica a quantidade de sentenças que serão recebidas.
+
+N
+
+Em seguida, você receberá N sentenças matemáticas;
+
+exp1
+
+exp2
+
+...
+
+expN
+
+
+Para cada entrada, você deverá retornar se há uma igualdade na quantidade de parênteses, o código deverá apresentar as seguintes respostas:
+
+→ Se a quantidade de parênteses '(' for igual a quantidade de parênteses ')':
+
+“Essa sentença está com os parênteses balanceados, HOORAY!”
+
+→Se a quantidade de parênteses '(' for maior que a quantidade de parênteses ')':
+
+”A quantidade de parênteses '(' está maior que a de ')', vamos descartá-la”
+
+→Se a quantidade de parênteses ')' for maior que a quantidade de parênteses '(':
+
+”A quantidade de parênteses ')' está maior que a de '(', vamos descartá-la”
+
+Obs.: para printar aspas dentro da função print, você pode digitar ** (contra-barra) + ' (aspas) junto ou colocar como aspas mais externas as aspas duplas "
+
+
+/////
+
+sentencas = int(input()) # Determinando o numero de sentenças a fazer.
+numerodeparenteses = 0 # Determino uma váriavel numerica para utilizar como checagem de igualdade de parenteses
+
+
+def checagem_parenteses(senmath, numerodeparenteses = 0):
+  
+  if senmath == '':  # Caso base, se meu input estiver vazio;
+    return numerodeparenteses # Retorno minha variavel numerodeparenteses
+  
+  parentese = senmath[0] # Dou a minha variavel local, o valor do primeiro caractere do input.
+  
+  if parentese == ')': # Se meu primeiro caractere for ')'
+    numerodeparenteses -= 1 # Diminuo um na minha contagem de igualdade.
+  elif parentese == '(': # Se for ')'
+    numerodeparenteses += 1 # Aumento um na contagem de igualdade.
+
+  return checagem_parenteses(senmath[1:], numerodeparenteses) # Utilizo da recursão para continuar checando todas as letras do meu input, se for ) ou ( ele aumenta ou diminui, se não for, ele passa pro proximo.
+
+def checar_parenteses(senmath): # Função que criei para chamar os prints e checar a situação dos mesmos.
+  numero_de_parenteses = checagem_parenteses(senmath) # Tô puxando minha função dentro da minha outra função (caralho aqui o pai foi ball of gold)
+  
+  if numero_de_parenteses == 0: # Checo as situações dos prints
+    print('Essa sentença está com os parênteses balanceados, HOORAY!')
+  elif numero_de_parenteses > 0:
+    print("A quantidade de parênteses '(' está maior que a de ')', vamos descartá-la")
+  elif numero_de_parenteses < 0:
+    print("A quantidade de parênteses ')' está maior que a de '(', vamos descartá-la")
+
+  
+  
+
+for x in range (sentencas): # Abro meu intervalo de sentenças:
+  
+  senmath = input() # Input de sentenças
+  checar_parenteses(senmath) # Chamada de função que vai chamar outra função.
+  

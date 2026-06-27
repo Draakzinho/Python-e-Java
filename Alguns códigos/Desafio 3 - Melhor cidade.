@@ -1,0 +1,32 @@
+Originalmente criadas para celebras os três santos de junho – Antônio, João e Pedro -, as festas juninas começaram a tomar conta da agenda cultura do Brasil. De norte a sul, as cidades convidam a população e os turistas para festejos típicos. As principais cidades são: Caruaru(PE), Campina Grande(PB), João Pessoa(PB), São Luís (MA), Mossoró e Natal (RN), Fortaleza (CE), entre outas. Para escolher a melhor festa, existe um site que fornece notas, que é uma média das avaliações recebidas por cada cidade. Sua tarefa é ajudar o usuário a encontrar a cidade mais adequada para ele ir, que seria a de maior nota. Apenas um detalhe, caso a nota mais alta não seja maior ou igual a 4, deve-se imprimir "Nota mínima não atingida".
+
+Em caso de empate nas notas deve selecionar a cidade mais próxima. Não haverá empate na proximidade nesses casos.
+
+
+c1 = input()
+n1 = float(input())
+d1 = int(input())
+
+c2 = input()
+n2 = float(input())
+d2 = int(input())
+
+c3 = input()
+n3 = float(input())
+d3 = int(input())
+
+if (n1 < 4.0) and (n2 < 4.0) and (n3 < 4.0):
+  print("Nota mínima não atingida")
+elif(n1 > n2) and (n1 > n3):
+  print(f"{c1}")
+elif (n2 > n1) and (n2 > n3):
+  print(f"{c2}")
+elif (n3 > n1) and (n3 > n2):
+  print(f"{c3}")
+elif (n1 == n2) and (n1 == n3) and (n3 == n2):
+  if (d1 < d2) and (d1 < d3):
+    print(f"{c1}")
+  elif (d2 < d1) and (d2 < d3):
+    print(f"{c2}")
+  elif (d3 > d2) and (d3 < d1):
+    print(f"{c3}")

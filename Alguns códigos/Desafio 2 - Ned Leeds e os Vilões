@@ -1,0 +1,35 @@
+Peter Parker, o Homem-Aranha, recebeu um alerta de que há 2 vilões nas suas redondezas, ficando com dúvida em qual confrontar primeiro. Como ainda não tinha recebido tecnologia Stark para fazer uma análise com mais precisão, seu amigo Ned Leeds decidiu criar uma fórmula para mensurar o nível de destruição do vilão.
+
+Destruição = (Poder² * Local) / 2
+Sendo:
+
+Poder = um valor numérico que mensura o poder
+Local = um valor numérico que mensura como o local será afetado
+Com isso em mãos, crie um programa, usando a fórmula de Ned, para ajudar Peter Parker a lutar com o mais destruidor primeiro.
+
+Como último ponto, pois Peter não querer perder seu tempo com pequenos casos, NÃO nos preocuparemos com vilões com poderes negativos, já que são muito fracos. Com isso, se aparecer pelo menos um vilão com poder negativo, apenas imprima: "Nem faco essa comparacao! Quero ser um vingador, busco coisas maiores."
+
+
+nomev1 = input()
+
+poderv1 = int(input())
+
+localv1 = int(input())
+
+destruicaov1 = ((poderv1**2) * localv1) / 2
+
+nomev2 = input()
+poderv2 = int(input())
+localv2 = int(input())
+destruicaov2 = ((poderv2**2) * localv2) / 2
+if (poderv1 < 0 ) or (poderv2 < 0):
+    print ("Nem faco essa comparacao! Quero ser um vingador, busco coisas maiores.")
+elif destruicaov2 > destruicaov1:
+    print(f"Com grandes poderes, vem grandes responsabilidades. Com isso, preciso ir deter o {nomev2}.")
+elif destruicaov1 > destruicaov2:
+    print (f"Com grandes poderes, vem grandes responsabilidades. Com isso, preciso ir deter o {nomev1}.")
+elif destruicaov1 == destruicaov2:
+    if (destruicaov1 % 2 == 0):
+      print("E quem disse que isso e problema meu? Vou chamar o senhor Stark.")
+    else:
+      print("Vou chamar uns reforcos de outro universo... rsrs")

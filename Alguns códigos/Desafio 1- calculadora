@@ -1,0 +1,39 @@
+/// Imagine-se navegando pelos mares turbulentos do universo de One Piece, a bordo do Thousand Sunny, ao lado do lendário Capitão Monkey D. Luffy e sua tripulação dos Chapéus de Palha. Como o gênio por trás da tecnologia do navio, você é o Franky, responsável por garantir que tudo funcione perfeitamente enquanto Luffy e sua turma enfrentam perigos e desafios em sua busca pelo One Piece.
+
+/// Um dia, enquanto Luffy, com seu habitual entusiasmo e pouca noção, tenta usar uma calculadora para dividir um monte de carne entre a tripulação, ele percebe que a máquina não está funcionando direito. Claro, ele não faz ideia de como consertar, então, em sua infinita confiança, ele grita: "Ei, Franky! Conserta isso aqui pra mim!"
+
+/// Você sabe que o cérebro do Luffy não é lá dos mais brilhantes quando se trata de tecnologia, então, para evitar que ele tente resolver o problema com socos ou mordidas, você decide criar um código que seja tão simples que até o Luffy entenderia (ou pelo menos, você espera que ele entenda).
+
+/// Mas aqui está o desafio: Ele precisa ser capaz de somar, subtrair, multiplicar, dividir, potencializar (primeiro base e depois expoente) e radicalizar (primeiro radicando e depois índice), mas se ele tentar fazer algo que a calculadora não entenda, ela precisa dizer que ele está fazendo algo errado.
+
+numero_1 = int(input())
+operador = input()
+numero_2 = int(input())
+
+if operador == "+":
+    Z = numero_1 + numero_2
+    print(f"O resultado é {Z}.")
+
+elif operador == "-":
+    Z = numero_1 - numero_2
+    print(f"O resultado é {Z}.")
+
+elif operador == "*":
+    Z = numero_1 * numero_2
+    print(f"O resultado é {Z}.")
+
+elif operador == "/":
+    Z = numero_1 // numero_2
+    print(f"O resultado é {Z}.") 
+  
+  
+elif operador == "**":
+    Z = numero_1 ** numero_2
+    print(f"O resultado é {Z}.")
+
+elif operador == "rad":
+    Z = int((numero_1 ** (1/numero_2)))
+    print(f"O resultado é {Z}.")
+
+else:
+    print("Luffy, você SUUUUPER não sabe usar isso, chama o Sanji!")

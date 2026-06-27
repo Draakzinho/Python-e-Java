@@ -1,0 +1,276 @@
+Um dos eventos mais aguardados do ano iniciou-se: Os Jogos Internos do PD, vulgo interclasse! Nesse momento de tensão entre as salas, você, como capitão da sua equipe de futsal, desempenha um papel essencial, há muito o que se fazer, o que pode o deixar cansado para os jogos. Contudo, mantenha a calma, você pode sair a frente! Até porquê, além de jogador caro você também é programador! Aqui surge sua mais nova criação o GalvãoBot....
+
+Esse sistema consiste em lhe ajudar no que for preciso, seu primeiro trabalho será ajudar-lhe a registrar cada jogador do time para que possa informar a comissão sobre a formação! Em seguida, fará estimativas de partidas para que possam estar preparados!
+
+Você, deve primeiro se conectar com algum membro da Comissão, assim poderá encaminhar automaticamente as informações geradas. Para isso digitará o usuário institucional com o qual pretende conectar-se.
+
+A primeira entrada será o nome do usuário que está tentando contactar:
+
+{membro_da_comissão}
+
+Os usuários válidos já registrados são:
+
+emerson.novaera
+
+erick.daselva
+
+valdelas
+
+marcella.linda123
+
+tamys.silva_br
+
+levi.ackerman
+
+mec.programadora
+
+alex_do_gerah
+
+Caso esse usuário não esteja entre os listados acima, o GalvãoBot negará acesso. Nesse segundo cenário, deverá ser encerrado o processo imediatamente, para que busque-se uma solução externa com a própria comissão, imprimindo a seguinte mensagem:
+
+Desse jeito, vai complicar, meu amigo! Usuário da comissão não encontrado.
+
+Conectado a um dos membros deverá prosseguir. Primeiramente, logo após isso, será recebido a sala que você lidera no futsal:
+
+{sala}
+
+Logo após será informada a quantia de estudantes que atualmente já foram informados como integrantes do time para comissão, sendo um número de 0 até 8:
+
+{qtd_jogadores_informados}
+
+Assim, conforme a quantidade informada se espera os nomes dos jogadores, suas respectivas posições (Podendo ser: goleiro, pivô, fixo, ala esquerdo e ala direito}, caso a posição não seja dita, deduz-se que trata-se de um 'reserva', além de seus "pesos" que indicam a qualidade técnica do mesmo, indo de 0 à 10. Qualquer um que estiver no banco, como reserva, deve ter seu peso categorizado como 3. Faça essa adição de jogadores à formação com uma função que possua parâmetros default para no caso de ser um reserva.
+
+{jogador1}-{posicao1}-{peso_1}
+
+{jogador2}
+
+.
+
+.
+
+.
+
+{jogadorN}-{posicaoN}-{pesoN}
+
+No fim, aparecerá todos os jogadores que forama dicionados com suas respectivas posições, para isso deve ser criada uma função, podendo ela ser um processo (ou seja sem return e apenas o print):
+
+DICA: O que pode ser feito é uma lista com nomes dos jogadores, outra com suas respectivas posições que desempenham e uma última com seus "pesos". Pode também haver uma variável númerica com o peso do time que inicia-se em 0. Tais listas poderão ser manipuladas nas funções.
+
+Para cada entrada descrita abaixo, realize a operação correspondente através de uma função:
+
+Se o comando for:
+
+Olha só, amigo! Vamos pra mais da escalação do time:
+
+Espera-se em seguida o nome, a posição e o "peso" de um jogador. Esse será adicionado ao time, por isso reutilize a função usada inicialmente para adicionar os primeiros. A informação segue nos mesmos moldes do início, podendo inclusive não conter nem posição e nem peso, ou seja um reserva com peso 3:
+
+{jogador}-{posicao}-{peso}
+
+Deve-se enfatizar que o limite de jogadores permitidos no time são 8, podendo conter apenas um de cada posição (goleiro, pivô, fixo, ala esquerdo e ala direito) e até 3 reservas, Além disso, obviamente, não é permitido jogadores repetidos. Depedendo da situação a função retornará mensagens diferentes. Caso a adição desrespeite alguma das regras, o retorno que deve ser exibido é:
+
+Amigo, eu vou te falar só uma coisa... Olha essa formação aí!
+
+Mas a caso a adição seja um sucesso:
+
+Ele veste a camisa, é com garra, é com amor. {jogador} representando como {posicao}.
+
+Se o comando for:
+
+Olha o elenco ai, amigos da rede Porto!
+
+Deve se exibir cada um dos jogadores atualmente registrados e suas respectivas posições, dessa maneira. Reuse a função que foi criada para exibir a formação inicial logo após recebe-lá.
+
+{jogador1}-{posicao1}
+
+{jogador2}
+
+.
+
+.
+
+.
+
+{jogadorN}-{posicaoN}
+
+Caso o time esteja vazio, mostra-se:
+
+Não é possível, Arnaldo!
+
+O GalvãoBot pode ainda usar os pesos dos jogadores para definir o peso do time, sendo normalmente apenas a soma dos pesos de cada jogador. Ele fará isso se receber o seguinte comando:
+
+Arnaldo, e o que eu posso dizer desse time?
+
+Diante desse comando deverá executar uma função que calcule o peso total do time, assim podendo adicionar o valor inteiro que retornar a variável númerica com o peso do time já criada. Caso, o valor seja menor que 25, a seguinte mensagem aparecerá:
+
+A zaga tá batendo cabeça, o meio de campo tá perdido, sem criatividade. E o ataque? Isolado, sem receber uma bola decente! Assim não dá!. No máximo, o {sala} é uns {peso_do_time} na escala!
+
+Caso seja maior que 25, mas menor que 45, a mensagem será:
+
+Esse time tem qualidade, tem talento, mas tá faltando encaixar o jogo! O {sala}... é uns... {peso_do_time} ali na escala.
+
+E para valores acima de 45:
+
+O elenco é fortíssimo: tem goleiro experiente, zaga sólida, meio-campo técnico, e um ataque rápido e criativo. O {sala} TÁ MUITO ACIMA: {peso_do_time} PRA MAIS, PRA MAIS, NA ESCALA!
+
+E novamente exibir o time, assim como anteriormente.
+
+Por fim, quando for estimar uma partida, o comando recebido será:
+
+Vai rolar a bola! É emoção que não acaba mais, amigo! Haja coração! E aí, Arnaldo, me diz uma coisa: o que tem a favor desse time?
+
+Logo em seguida, será dito a sala adversária e a sua dificuldade, variando entre fácil, normal e difícil:
+
+{sala_adversária}-{dificuldade}
+
+Abaixo dessas informações, receberá uma única linha com uma quantidade indefinida de fatores que estão a favor do time.
+
+{fator1}, {fator2}, {fator3} ... {fatorN}
+
+Para cada fator favorável o peso do time será adicionado +1, contudo nessa linha poderá ao invés dos fatores ter a seguinte mensagem:
+
+A verdade é que a situação tá complicada... A favor desse time, não tem nada!
+
+Com essa nada será adicionado ao peso, justamente por não haver nenhum fator favorável.
+
+DICA: Um dos caminhos possíveis é que a função utilizada para calcular peso tenha um argumento indefinido, ou seja acompanhado de um * antes do parâmetro tornando-o opcional e podendo receber nele vários valores. Assim, quando for apenas calcular não receberia nada na chamada, mas quando fosse estimar o resultado de uma partida, a função seria chamada passando como parâmetro uma lista com esses fatores favoráveis!
+
+Ainda sobre a estimativa da partida, deve-se ter em consideração que se a sala adversário for um 3ºano, o peso do seu time perderá 2 pontos e caso for um 1ºano será acrescentado 2. No fim, para vencer irá variar conforme a dificuldade, para partidas facéis o peso do seu time deverá ser no mínimo 25, para desafios médios o mínimo para vitória será 35 e para dificeis deve assumir ao menos 45.
+
+ATENÇÃO: Os fatores favoráveis em uma partida só mudam o peso do time NAQUELA partida, o mesmo vale para a vantagem caso estejam competindo com um 1ºano ou a desvantagem quando com um 3ºano, só são válidas para AQUELA partida estimada, não alterando o peso do time fixamente!
+
+Em caso de vitória o retorno da função deverá ser o valor True e em caso de derrota False. Serão mostradas mensagens para ambos cenários. Na vitória deve exibir-se:
+
+O apito final confirma a vitória! QUE ESPETÁCULO DO {sala}. No fim, não teve como pro {sala_adv}! Isso é futebol, meus amigos!
+
+Mas para derrotas:
+
+Que tristeza, amigo! O time lutou, mas não conseguiu segurar o resultado. A torcida do {sala}, que esteve em peso, agora vai embora cabisbaixa, dando espaço pro avanço do {sala_adv}.
+
+Para o programa do GalvãoBot parar de ser executado a mensagem que receberá para dar break será:
+
+Quero agradecer de coração a você que nos acompanhou!
+
+
+////
+
+
+listalogins = ["emerson.novaera", "erick.daselva", "valdelas", "marcella.linda123", "tamys.silva_br", "levi.ackerman", "mec.programadora", "alex_do_gerah"] # Lista dos logins da comissão (todos não prestam)
+listajogadores, listaposicaojogadores, listapesos = [], [], [] # Listas essenciais
+listareservas = [] # Mais lista
+listafatores = [] # Mais lista
+
+posicoesjogaveis = ['goleiro', 'fixo', 'ala esquerdo', 'ala direito', 'pivô', 'reserva'] # As posições jogáveis
+peso_total = 0 # PESO NÃO, TONELADA$$$
+
+usuario = input() # Login da comissão
+
+listacomandos = ["Olha só, amigo! Vamos pra mais da escalação do time:", 'Arnaldo, e o que eu posso dizer desse time?', 'Olha o elenco ai, amigos da rede Porto!:', 'Quero agradecer de coração a você que nos acompanhou!', 'Vai rolar a bola! É emoção que não acaba mais, amigo! Haja coração! E aí, Arnaldo, me diz uma coisa: o que tem a favor desse time?']
+ # Lista de comandos
+
+def adicionar_reserva(): # Função para adicionar os reservas
+    # Essa função depende de que lá onde os dados do reserva é inserido, o nome dele já esteja lá, por isso não consta na função.
+    posicao_do_jogador = "reserva" # Como apenas recebo o nome, determino os valores default para posição e peso.
+    tonelada_do_jogador = 3
+    
+    if nome_do_jogador not in listajogadores and len(listajogadores) < 8 and (len(listareservas) < 3) and (posicao_do_jogador in posicoesjogaveis): # Determino as condições para que eu possa contar um jogador como adição válida.
+        listajogadores.append(nome_do_jogador) # Adiciono
+        listaposicaojogadores.append(posicao_do_jogador)
+        listapesos.append(tonelada_do_jogador)
+        listareservas.append(posicao_do_jogador)
+        if len(listajogadores) > qtd_jogadores_informados: # Utilizo isso apenas para que não rode o print nos primeiros jogadores adicionados.
+        
+          print(f'Ele veste a camisa, é com garra, é com amor. {nome_do_jogador} representando como {posicao_do_jogador}.')
+    else:
+        print('Amigo, eu vou te falar só uma coisa... Olha essa formação aí!')
+
+def resultado_da_partida(): # Defino o resultado da partida (sinto que não necessariamente deveria ser função, mas usei.)
+  if dificuldade == 'fácil':
+    return peso_total >= 25
+  elif dificuldade == 'normal':
+    return peso_total >= 35
+  elif dificuldade == 'difícil':
+    return peso_total >= 45
+
+def adicionar_jogador(): # O mesmo esquema do de adicionar reserva, entretanto, aqui eu já consto relaciono todos os dados dentro da função.
+    nome_do_jogador, posicao_do_jogador, tonelada_do_jogador = dados # Dados
+    tonelada_do_jogador = int(tonelada_do_jogador) # Transformo o peso para inteiro, para poder somar na função de soma de pesos
+    
+    if (nome_do_jogador not in listajogadores) and (posicao_do_jogador not in listaposicaojogadores) and (len(listajogadores) < 8) and (posicao_do_jogador in posicoesjogaveis) : # Condições para ser uma adição válida.
+          listajogadores.append(nome_do_jogador)
+          listaposicaojogadores.append(posicao_do_jogador)
+          listapesos.append(tonelada_do_jogador)
+          if len(listajogadores) > qtd_jogadores_informados: # Mesmo caso do de cima, apenas para não mostrar aos primeiros 3 adicionados.
+            print(f'Ele veste a camisa, é com garra, é com amor. {nome_do_jogador} representando como {posicao_do_jogador}.')
+    else:
+        print('Amigo, eu vou te falar só uma coisa... Olha essa formação aí!')
+
+
+def formacao(): # Aqui é onde exibo a minha formação, função feita só pra isso mesmo.
+    if len(listajogadores) == 0: # Caso minha lista de jogadores não tenha ninguem, ou seja, esteja vazia, printo que nem dá.
+      print("Não é possível, Arnaldo!")
+    else: # Caso contrário, zipo minhas duas listas e chamo o nome do jogador com sua respectiva posição (eu te amo zip)
+      for jogador, posicao in zip(listajogadores, listaposicaojogadores):
+        print(f'{jogador}-{posicao}')
+
+def somadepesos(): # Aqui é a soma, apenas.
+    peso_do_time = sum(listapesos)
+    
+    return peso_do_time
+    
+
+
+if usuario not in listalogins: # Caso o usuario nao seja um login válido:
+    print("Desse jeito, vai complicar, meu amigo! Usuário da comissão não encontrado.")
+else: # Caso seja, prossegue o código
+  sala = input() # não vou comentar esses bgl besta não
+  qtd_jogadores_informados = int(input())
+  
+  
+  for x in range (qtd_jogadores_informados): # Abro um for para os jogadores a serem adicionados inicialmente
+    jogadores = input()
+    dados = jogadores.split("-") # Splito os dados
+    if len(dados) == 3:  # Se os dados constarem nome, posição e peso, sei que é um jogador principal e chamo minha função de jogador principal.
+      adicionar_jogador()
+    elif len(dados) == 1: # Caso conste apenas o nome, sei que é reserva e chamo sua respectiva função.
+      nome_do_jogador = dados[0] # Determino o nome do jogador respectivamente aos dados.
+      adicionar_reserva()
+  formacao() # Chamo minha formação atual
+  while True: # Abro um while true, já que receberei comandos sem fim.
+    comando = input()
+    if comando == "Olha só, amigo! Vamos pra mais da escalação do time:": # Adição de jogador
+      jogadores = input()
+      dados = jogadores.split("-") # Mesmo sistema do de cima, caso tenha 3, chamo a função principal. Se tiver só 1, chamo a reserva.
+      if len(dados) == 3:
+        adicionar_jogador()
+      elif len(dados) == 1:
+        nome_do_jogador = dados[0] # Mema coisa
+        adicionar_reserva()
+    
+    elif comando == 'Olha o elenco ai, amigos da rede Porto!': # Chamo a formação
+      formacao()
+    elif comando == 'Arnaldo, e o que eu posso dizer desse time?': # Chamo as situações de TONELADA$$$ do time
+      peso_total = somadepesos()
+      if peso_total < 25:
+        print(f"A zaga tá batendo cabeça, o meio de campo tá perdido, sem criatividade. E o ataque? Isolado, sem receber uma bola decente! Assim não dá!. No máximo, o {sala} é uns {peso_total} na escala!")
+      elif 25 <= peso_total < 45:
+        print(f"Esse time tem qualidade, tem talento, mas tá faltando encaixar o jogo! O {sala}... é uns... {peso_total} ali na escala.")
+      else:
+        print(f"O elenco é fortíssimo: tem goleiro experiente, zaga sólida, meio-campo técnico, e um ataque rápido e criativo. O {sala} TÁ MUITO ACIMA: {peso_total} PRA MAIS, PRA MAIS, NA ESCALA!")
+    elif comando == 'Vai rolar a bola! É emoção que não acaba mais, amigo! Haja coração! E aí, Arnaldo, me diz uma coisa: o que tem a favor desse time?': # Inicio o jogo com esse comando
+      sala_adv, dificuldade = input().split('-')
+      fatores = input().split(',')
+      if fatores != 'A verdade é que a situação tá complicada... A favor desse time, não tem nada!': # Se meus fatores forem diferentes desse input determinado, então existem fatores.
+        listafatores.append(fatores)
+        peso_total = peso_total + len(fatores) # Adiciono os fatores as TONELADA$$$ do meu time
+      if sala_adv == '3B' or '3A' or '3C': # Caso a sala seja algum dos 3 anos, as TONELADA$$$ diminuem em 2
+        peso_total = peso_total - 2
+      if sala_adv == '1A' or '1B' or '1C': # Caso seja algum dos 1 anos, as TONELADA$$$ aumentam em 2
+        peso_total = peso_total + 2
+      if resultado_da_partida() == True: # Se o resultado for verdadeiro, ganhemo
+        print(f'O apito final confirma a vitória! QUE ESPETÁCULO DO {sala}. No fim, não teve como pro {sala_adv}! Isso é futebol, meus amigos!')
+      else: # Se for falso, perdemo
+        print(f'Que tristeza, amigo! O time lutou, mas não conseguiu segurar o resultado. A torcida do {sala}, que esteve em peso, agora vai embora cabisbaixa, dando espaço pro avanço do {sala_adv}.')
+    elif comando == 'Quero agradecer de coração a você que nos acompanhou!': # Fim do código
+      break
+    elif comando not in listacomandos: # Se o comando (não vermelho) estiver fora da lista dos comandos executaveis, printo;
+      print('COMANDO NÃO RECONHECIDO.')

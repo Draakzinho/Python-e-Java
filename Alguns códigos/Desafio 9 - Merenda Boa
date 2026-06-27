@@ -1,0 +1,97 @@
+O Governo de Raquel Lyra sempre preza pela manutenção de algo que se destaca em Pernambuco: a educação, isso inclui a satisfação dos estudantes. Pensando nisso e em garantir que as refeições dos alunos sejam sempre de alta qualidade, a Secretaria de Educação lançou um projeto em que alunos de diferentes escolas avaliam semanalmente a merenda oferecida, atribuindo notas aos pratos e experimentando possíveis novas opções a serem inseridas no cardápio escolar, sendo de pratos já conhecidos ou completamente novos.
+
+Com o programa Merenda Boa, alunos selecionadas aleatoriamente atribuiram notas para a "qualidade e sabor da merenda", tanto dos pratos atuais quanto das novas opções, para no fim ser estudado os róis (painéis) estatísticos gerados.
+
+Você, atualmente dev jr. na SEE (Secretaria de Educação), deve ajudar a organizar as listas enviadas, para que o relatório final seja apresentado ao setor responsável.
+
+O primeiro input será o nome de quem está enviando as avaliações dos pratos:
+
+nome = Nome do avaliador.
+
+O segundo, será a quantidade de pratos, logo também notas, que as listas possuem:
+
+quantidade = Quantidade de pratos e de suas respectivas notas.
+
+Após isso, seu programa irá receber as receitas e as notas respectivamente, no formato:
+
+{prato}-{nota}
+
+Considere que a nota tem uma entrada amigável que será respeitada, sempre indo de 0 à 10.
+
+Atenção: Existem algumas regras a serem seguidas nessa fase: Caso um prato venha a ser repetido, ou seja foi avaliado mais de uma vez, você deve considerar a maior avaliação:
+
+Se a avaliação anterior é a maior, deve-se apenas ignorar a posterior, a nova;
+Contudo, caso a mais recente tenha maior nota, deve-se substituir a nota anterior pela mais nova e maior;
+Caso a avaliação seja igual à anterior, interpreta-se como um erro, logo não houve verdadeiramente duas avaliações e apenas o registro que foi repetido ou desorganizado, então deve-se respeitar a ordem e inseri-lá no final da lista e descartar a anterior, assim como o prato referente.
+Após isso, receberá mais input informando quantas novas opções foram apresentadas ao estudante:
+
+qtd_novas = Quantidade dos novos pratos e de suas respectivas notas.
+
+Assim como antes, seu programa irá receber os "rangos" e as notas respectivamente, no formato:
+
+{prato_novo}-{nota}
+
+Contudo, esse cardápio pode incluir melhorias em relação ao anterior e adições, então atente-se, pois caso trate-se de um prato, o qual foi NÃO avaliado anteriormente, isso será enfatizado no final, caso contrário, sendo uma releitura, ou seja um prato que JÁ foi dado uma nota, apenas deve-se substituir a nota anterior pela nova, indepedemente de qual for maior.
+
+
+nome = input() # Nome do avaliador
+qtd_pratos = int(input()) # Quantia de pratos que irão ser avaliados
+prato, nota = [], [] # Listas dos pratos e as notas dos mesmos
+
+for x in range(qtd_pratos):
+  comida, avaliacao = input().split("-") # Split do nome dos pratos e de suas notas
+  avaliacao = int(avaliacao) # Transformando as notas em inteiras, para poder tirar a média
+  
+  if comida in prato: # Caso a comida já tenha sido provada, tira o index da nota da comida a ser recebida
+    nota_index = prato.index(comida)
+    nota_anterior = nota[nota_index] # Seto aqui a nota anterior da comida a ser reavaliada.
+
+    if avaliacao > nota_anterior: # Checa se a nota da nova avaliação de um prato já avaliado é maior que a anterior
+      nota[nota_index] = avaliacao
+    elif avaliacao == nota_anterior: # Caso a avaliação seja igual à anterior, interpreta-se como um erro, logo não houve verdadeiramente duas avaliações e apenas o registro que foi repetido ou desorganizado, então deve-se respeitar a ordem e inseri-lá no final da lista e descartar a anterior, assim como o prato referente.
+      prato.pop(nota_index)
+      nota.pop(nota_index)
+      prato.append(comida)
+      nota.append(avaliacao)
+  else: # Caso a comida não tenha sido provada, adiciona ela a lista de comidas provadas.
+    prato.append(comida)
+    nota.append(avaliacao)
+
+print(f"AVALIAÇÃO DE {nome.upper()}:" ) # Os prints da avaliação, não tem lógica, só sintaxe e muito ctrl + c e ctrl + v
+print(*nota, sep = ', ')
+media_inicial = sum(nota) // len(nota) # Tiro a média das notas iniciais dos pratos.
+print(f'Média inicial: {media_inicial}')
+
+qtd_novas = int(input())
+alteracoes, pratofinal = [], [] # Adiciono duas listas, uma para guardar as alterações nas notas atribuidas e assim tirar a diferença da reavaliação e a inicial. Outra para guardar os novos pratos.
+
+
+for x in range (qtd_novas):
+  novacomida, novaavaliacao = input().split("-") # Assim como no primeiro input, splito prato e notas.
+  novaavaliacao = int(novaavaliacao) # Transformo as novas notas em inteiras para poder tirar a média depois.
+  
+  if novacomida in prato: # Checo se a comida já está dentro da primeira lista, caso esteja, altero sua nota pela nova nota.
+    index1 = prato.index(novacomida)
+    nota_antiga = nota[index1]
+    nota[index1] = novaavaliacao
+    diff = novaavaliacao - nota_antiga # Começo a tirar as diferenças dos novos pratos que tambem estavam nos pratos antigos.
+    alteracoes.append(f"{novacomida}: {diff}") # Guardo as alterações dentro da lista feita para isso.
+  else: # Caso a nova comida não esteja na lista das que já foram provadas, adiciono as mesmas na lista das comidas já provadas, juntamente de suas respectivas notas.
+    prato.append(novacomida)
+    nota.append(novaavaliacao)
+    pratofinal.append(novacomida) # Adiciono todos os pratos novos dentro da lista de pratos novos.
+
+print(*nota, sep=', ') # Mesma coisa de cima, chamo as notas juntamente de sua média.
+media_final = sum(nota) // len(nota)
+print(f'Média final: {media_final}')
+
+if pratofinal: # Caso haja novos pratos, chamo os.
+  print('Os potenciais novos sarros experimentados foram:') # Aqui chamo os novos pratos que não haviam sido testados no primeiro.
+  print(*pratofinal, sep = ', ')
+
+
+if alteracoes: # Aqui determino que se a minha lista chamada Alterações não estiver vazia, ele chamará minhas diferenças.
+  for alteracao in alteracoes:
+    print(alteracao)
+else: # Caso esteja vazia, sem mudanças nas receitas anteriores.
+    print('Sem mudanças em receitas anteriores.')

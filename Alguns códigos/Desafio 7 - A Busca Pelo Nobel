@@ -1,0 +1,95 @@
+Sheldon Lee Cooper se prova constantemente, na série, um dos homens mais inteligentes do mundo desde criança, mas para conseguir o seu objetivo final, ganhar o Nobel de Física, ele precisa da sua ajuda.
+
+Para isso, Sheldon pediu para você listar as conquistas acadêmicas que ele terá na sua vida até chegar no prêmio Nobel. Você terá que se certificar não só quais são os feitos que Sheldon realizou, mas se eles estão vindo na ordem cronologicamente correta também, sendo eles, já em ordem:
+
+'Começou a Trabalhar na Caltech', 'Trabalho sobre a String Theory', 'Ganhar o Chancellor de ciência', 'Pensar na Teoria de Cooper-Hofstader', 'Criou a Super Assimetria' e 'Ganhar o Nobel'.
+
+Sheldon é conhecido pelas suas pegadinhas também, então, se assim que ele completar um desses feitos, a palavra 'Bazinga' for recebida, o feito deve ser desconsiderado, e precisará ser feito novamente para ser validado. Atenção, se você receber um Bazinga sem ser logo após ele ter ‘avançado’ mais um feito na sua carreira, ele não deve retroceder de novo.
+
+Sheldon também pode ser um pouco duro com seus amigos, então, se ele xingar Howard, Leonard ou Raj, você deve repreender ele!
+
+Obs.: Se você receber algum desses feitos na ordem errada, ele não deve ser considerado como feito, e só como uma mensagem recebida.
+
+Se você receber os xingamentos: 'Tinha que ser o engenheiro sem Phd do Wolowitz' ou 'Leonard seu anão covarde' ou 'Tu é muito burro Raj’, você deve printar:
+
+Não xingue seus amigos Sheldon!
+
+No fim de tudo, se Sheldon desistir antes mesmo de Começou a Trabalhar na Caltech, deve ser printado:
+
+Que potencial desperdiçado...
+
+Se ele ainda estiver apenas Trabalhando na String Theory ou na Caltech, printe:
+
+Tão perto, mas tão longe
+
+Se ele ainda estiver até só ter ganho o Chancellor ou pensado na Teoria de Cooper-Hofstader, printe:
+
+Não desista Sheldon, você ainda têm muito para alcançar!
+
+Se ele tiver pensado na Super Assimetria, mas ainda não ganho o Nobel, printe:
+
+Nãoooooo, esse momento ia ser seu Sheldon
+
+Se ele tiver ganho o Nobel, printe:
+
+Você conseguiu Sheldon, o Nobel é seu!!!
+
+////
+
+
+mensagem = None
+pts = 0
+conquista = False
+
+while True:
+  mensagem = input()
+  if mensagem == 'Ganhar o Nobel' and pts == 5:
+    print('Você conseguiu Sheldon, o Nobel é seu!!!')
+    break
+  elif mensagem == 'Bazinga' and pts > 0 and conquista == True:
+    pts -= 1
+    conquista = False
+  elif mensagem =='Começou a Trabalhar na Caltech' and pts == 0:
+    pts += 1
+    conquista = True
+  elif mensagem == 'Trabalho sobre a String Theory' and pts == 1:
+    pts += 1
+    conquista = True
+  elif mensagem == 'Ganhar o Chancellor de ciência' and pts == 2:
+    pts += 1
+    conquista = True
+  elif mensagem == 'Pensar na Teoria de Cooper-Hofstader' and pts == 3:
+    pts += 1
+    conquista = True
+  elif mensagem == 'Criou a Super Assimetria' and  pts == 4:
+    pts += 1
+    conquista = True
+  elif mensagem == 'Tinha que ser o engenheiro sem Phd do Wolowitz' or mensagem == 'Leonard seu anão covarde' or mensagem == 'Tu é muito burro Raj':
+    print('Não xingue seus amigos Sheldon!')
+    conquista = False
+  elif mensagem == 'É o fim da Estrada pra Sheldon Cooper':
+    if pts == 0:
+      print('Que potencial desperdiçado...')
+    elif pts == 1 or pts == 2:
+      print('Tão perto, mas tão longe')
+    elif pts == 3 or pts == 4:
+      print('Não desista Sheldon, você ainda têm muito para alcançar!')
+    elif pts == 5:
+      print('Nãoooooo, esse momento ia ser seu Sheldon')
+    break
+  elif mensagem == 'Ganhar o Nobel' and pts != 5:
+    pass
+  elif mensagem =='Começou a Trabalhar na Caltech' and pts != 0:
+    pass
+  elif mensagem == 'Trabalho sobre a String Theory' and pts != 1:
+    pass
+  elif mensagem == 'Ganhar o Chancellor de ciência' and pts != 2:
+    pass
+  elif mensagem == 'Pensar na Teoria de Cooper-Hofstader' and pts != 3:
+    pass
+  elif mensagem == 'Pensar na Teoria de Cooper-Hofstader' and pts != 3:
+    pass
+  elif mensagem == 'Criou a Super Assimetria' and  pts != 4:
+    pass
+  else:
+    conquista = False

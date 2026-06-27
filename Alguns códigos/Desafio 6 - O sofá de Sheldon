@@ -1,0 +1,61 @@
+Sheldon está sentado no sofá da entrada do CIn. No entanto, ele não se encontra satisfeito pois está passando calor, com fome e sua conexão de internet está oscilando. Por isso, ele resolve procurar um lugar perfeitamente calculado para que se sinta mais acomodado.
+No início, as condições se encontram da seguinte maneira:
+
+Temperatura = 30 graus
+Fome = Com fome
+Internet = 0mb/s
+
+Você receberá indeterminadas entradas contendo ações realizadas pelo Sheldon para resolver a situação, até receber a entrada “parar”. As ações podem ser as seguintes:
+
+ir para o grad → Diminui a Temperatura em 5 graus e aumenta a Internet em 300mb/s
+
+sair para a rua → Aumenta a Temperatura em 5 graus
+
+comer uma quentinha → Acaba com a fome de Sheldon
+
+conectar no wifi → Aumenta a Internet em 100mb/s
+
+parar → Sempre será a última entrada
+
+Por fim, independente das saídas anteriores, caso Sheldon esteja sem fome, a temperatura esteja de 25 graus ou inferior e a conexão seja igual ou maior 300mb/s, seu código deverá imprimir:
+Finalmente um lugar preciso para mim!
+
+
+/////
+
+ti = 30
+fome = True
+i = 0
+entrada = None
+
+
+while entrada != "parar":
+
+  entrada = input()
+  
+  if entrada == "ir para o grad":
+    ti = ti - 5
+    i = i + 300
+  elif entrada == "sair para a rua":
+    ti = ti + 5
+  elif entrada == "comer uma quentinha":
+    fome = False
+  elif entrada == "conectar no wifi":
+    i = i + 100
+  elif entrada == "parar":
+    break
+  else:
+    print("Entrada inválida")
+    continue
+
+
+if ti >= 30:
+  print("A temperatura aqui não está agradável")
+if ti <= 25:
+  print("Agora sim, está aconchegante")
+if fome == True:
+  print("Meu corpo precisa de comida")
+if i < 100:
+  print("Essa conexão está horrível")
+if (fome == False) and (ti <= 25) and (i >= 300):
+  print("Finalmente um lugar preciso para mim!")
